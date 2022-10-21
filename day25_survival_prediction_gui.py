@@ -37,13 +37,13 @@ ttk.Spinbox(app, from_ = 0 , to =150, textvariable = ageVar,width= 10).grid(row=
 #Prediction Button
 def find_survival():
     global model
-    query_df  = pd.DataFrame({'Sex_Male':[genderVar.get()], 'Fare':[fareVar.get()], 'Age':[ageVar.get()]})
+    query_df = pd.DataFrame({'Sex_male':[genderVar.get()], 'Fare':[fareVar.get()], 'Age':[ageVar.get()]})
 
-pred = model.predict(query_df)
-if pred[0] == 1:
-    resultVar.set('Might Survived')
-else:
-    resultVar.set('Might Not survived')
+    pred = model.predict(query_df)
+    if pred[0] == 1:
+        resultVar.set('Might Survive!')
+    else:
+        resultVar.set('Might NOT Survive!')
 
 
 ttk.Button(app, text='Check', command = find_survival, padx=20, pady=2).grid(row=3, column=0, columnspan=2)
